@@ -9,7 +9,7 @@ const priceNote = document.querySelector("#priceNote");
 const requestForm = document.querySelector("#requestForm");
 const formStatus = document.querySelector("#formStatus");
 
-let activeTab = "saby";
+let activeTab = document.querySelector("[data-calc-tab].is-active")?.dataset.calcTab || "saby";
 
 const calculator = {
   saby: {

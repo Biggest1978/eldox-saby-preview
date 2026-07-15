@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://biggest1978.github.io/eldox-saby-preview/v2/sitemap.xml

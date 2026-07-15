@@ -8,18 +8,18 @@
   </head>
   <body>
     <main class="section admin-shell">
-      <p class="section-kicker">Внутренний контур</p>
-      <h1>Черновик записи для базы знаний</h1>
+      <p class="section-kicker">Контент-завод</p>
+      <h1>Карточка будущей публикации</h1>
       <p>
-        Это не публичная CMS и не защищенная админка. Это рабочая заготовка для контент-завода: сюда можно вставить тему,
-        категорию, обложку и лид, затем перенести запись в `content/articles.json` и создать статью по шаблону.
+        Рабочая форма для подготовки материала: тема, рубрика, короткое обещание для карточки и обложка. После редакционной
+        проверки запись переносится в витрину публикаций и разворачивается в полноценную статью.
       </p>
       <form class="request-form">
-        <label>Slug<input type="text" placeholder="crm-not-working" /></label>
-        <label>Категория<input type="text" placeholder="CRM" /></label>
+        <label>Адрес материала<input type="text" placeholder="crm-not-working" /></label>
+        <label>Рубрика<input type="text" placeholder="CRM" /></label>
         <label>Заголовок<input type="text" placeholder="CRM есть, но команда ее обходит: что проверить" /></label>
-        <label>Краткое описание<textarea placeholder="1–2 предложения для карточки"></textarea></label>
-        <label>Путь к обложке<input type="text" placeholder="../assets/hero.jpg" /></label>
+        <label>Анонс для карточки<textarea placeholder="Коротко: какая проблема разбирается и что человек сможет проверить после чтения"></textarea></label>
+        <label>Обложка<input type="text" placeholder="../assets/hero.jpg" /></label>
       </form>
     </main>
   </body>

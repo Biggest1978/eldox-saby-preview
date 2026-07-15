@@ -82,6 +82,7 @@ function formatRub(value) {
 }
 
 function renderScenarioOptions() {
+  if (!scenario || !scale) return;
   const current = calculator[activeTab];
   scenario.innerHTML = "";
   current.options.forEach(([value, label]) => {
@@ -98,6 +99,7 @@ function renderScenarioOptions() {
 }
 
 function updateCalculator() {
+  if (!scenario || !region || !scale || !support || !scaleOut || !price || !priceNote) return;
   const current = calculator[activeTab];
   const option = current.options.find(([value]) => value === scenario.value) || current.options[0];
   const scaleValue = Number(scale.value);
@@ -110,24 +112,31 @@ function updateCalculator() {
   priceNote.textContent = `Ориентир для ${current.label}: ${option[1].toLowerCase()}, масштаб ${scaleValue}. Точная смета зависит от деталей процесса, интеграций, контента, обучения и сопровождения.`;
 }
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    activeTab = tab.dataset.calcTab;
-    tabs.forEach((item) => item.classList.toggle("is-active", item === tab));
-    renderScenarioOptions();
+if (tabs.length) {
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      activeTab = tab.dataset.calcTab;
+      tabs.forEach((item) => item.classList.toggle("is-active", item === tab));
+      renderScenarioOptions();
+    });
   });
-});
+}
 
 [scenario, region, scale, support].forEach((control) => {
+  if (!control) return;
   control.addEventListener("input", updateCalculator);
   control.addEventListener("change", updateCalculator);
 });
 
 renderScenarioOptions();
 
-requestForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  formStatus.textContent = "Спасибо. Заявка пока зафиксирована в демо-режиме: следующий шаг — подключить webhook, CRM или Telegram-уведомление.";
-  requestForm.reset();
-  renderScenarioOptions();
-});
+if (requestForm) {
+  requestForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (formStatus) {
+      formStatus.textContent = "Спасибо. Заявка пока зафиксирована в демо-режиме: следующий шаг — подключить webhook, CRM или Telegram-уведомление.";
+    }
+    requestForm.reset();
+    renderScenarioOptions();
+  });
+}

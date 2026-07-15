@@ -85,6 +85,88 @@ a {
   color: var(--white);
 }
 
+.page-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.55fr);
+  gap: 48px;
+  align-items: center;
+  min-height: 560px;
+  padding: 94px clamp(20px, 6vw, 88px) 72px;
+}
+
+.page-hero-dark {
+  background:
+    radial-gradient(circle at 78% 26%, rgba(78, 223, 242, 0.18), transparent 28%),
+    linear-gradient(135deg, #071022, #111a2e);
+  color: var(--white);
+}
+
+.page-hero-light {
+  background:
+    radial-gradient(circle at 76% 28%, rgba(56, 107, 255, 0.12), transparent 28%),
+    linear-gradient(135deg, #f7faff, #ffffff);
+}
+
+.page-hero-light .eyebrow {
+  color: var(--blue);
+}
+
+.dark-lead {
+  color: var(--muted);
+}
+
+.hero-summary,
+.team-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.hero-summary {
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.hero-summary strong {
+  color: var(--white);
+  font-size: 22px;
+}
+
+.hero-summary ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 20px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.5;
+}
+
+.team-stack article {
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(14, 27, 56, 0.08);
+}
+
+.team-stack span {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--blue);
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.team-stack strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 26px;
+}
+
 .hero-bg,
 .hero-shade {
   position: absolute;
@@ -194,6 +276,17 @@ p {
   margin-top: 10px;
   background: var(--ink);
   color: var(--white);
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 10px;
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.solution-primary .text-link {
+  color: var(--cyan);
 }
 
 .hero-map {
@@ -646,6 +739,7 @@ footer span {
 
 @media (max-width: 1120px) {
   .hero,
+  .page-hero,
   .split,
   .section-heading.split,
   .insight,
@@ -688,6 +782,11 @@ footer span {
   .hero {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .page-hero {
+    min-height: auto;
+    padding: 64px 16px 52px;
   }
 
   .hero {

@@ -45,15 +45,15 @@
             <a class="button button-dark" href="#request">Предложить тему</a>
           </div>
         </div>
-        <aside class="hero-summary hero-summary-light">
-          <strong>Категории</strong>
-          <ul>
-            <li>Saby и ЭДО;</li>
-            <li>сайты и заявки;</li>
-            <li>CRM и продажи;</li>
-            <li>боты и интеграции;</li>
-            <li>изменения в цифровизации бизнеса.</li>
-          </ul>
+        <aside class="hero-summary hero-summary-light category-panel">
+          <strong>Рубрикатор</strong>
+          <div class="category-filter" data-article-filters>
+            <button class="is-active" type="button" data-article-filter="all">Все материалы</button>
+            <button type="button" data-article-filter="Saby">Saby и ЭДО</button>
+            <button type="button" data-article-filter="Сайты">Сайты и заявки</button>
+            <button type="button" data-article-filter="CRM">CRM и продажи</button>
+            <button type="button" data-article-filter="Автоматизация">Боты и интеграции</button>
+          </div>
         </aside>
       </section>
 
@@ -68,6 +68,7 @@
             проверить. Новые материалы будут добавляться через контентный контур, чтобы раздел регулярно обновлялся.
           </p>
         </div>
+        <p class="article-filter-status" data-article-filter-status></p>
         <div class="article-grid" data-articles-list data-limit="12"></div>
       </section>
 

@@ -9,6 +9,10 @@ const priceNote = document.querySelector("#priceNote");
 const requestForm = document.querySelector("#requestForm");
 const formStatus = document.querySelector("#formStatus");
 const articleLists = document.querySelectorAll("[data-articles-list]");
+const articleFilterButtons = document.querySelectorAll("[data-article-filter]");
+const articleFilterStatus = document.querySelector("[data-article-filter-status]");
+let loadedArticles = [];
+let activeArticleFilter = "all";
 
 let activeTab = document.querySelector("[data-calc-tab].is-active")?.dataset.calcTab || "saby";
 
@@ -150,6 +154,7 @@ function resolveArticlePath(path) {
 function createArticleCard(article) {
   const link = document.createElement("a");
   link.className = "article-card";
+  link.dataset.articleCategory = article.category;
   link.href = resolveArticlePath(article.url);
   link.innerHTML = `
     <img src="${resolveArticlePath(article.image)}" alt="" />
@@ -161,22 +166,57 @@ function createArticleCard(article) {
   return link;
 }
 
+function updateArticleFilterStatus(count, filter) {
+  if (!articleFilterStatus) return;
+  if (filter === "all") {
+    articleFilterStatus.textContent = `Показаны все материалы: ${count}`;
+    return;
+  }
+  articleFilterStatus.textContent = count
+    ? `Рубрика: ${filter}. Материалов: ${count}`
+    : `В рубрике "${filter}" пока нет публикаций. Она заложена под следующий выпуск контент-завода.`;
+}
+
+function renderArticleList(articles = loadedArticles) {
+  if (!articleLists.length) return;
+  const filtered = activeArticleFilter === "all"
+    ? articles
+    : articles.filter((article) => article.category === activeArticleFilter);
+
+  articleLists.forEach((list) => {
+    const limit = Number(list.dataset.limit || filtered.length);
+    list.innerHTML = "";
+    filtered.slice(0, limit).forEach((article) => list.appendChild(createArticleCard(article)));
+    if (!filtered.length) {
+      list.innerHTML = '<p class="article-empty">В этой рубрике пока нет материалов. Первый выпуск можно добавить через контентный контур.</p>';
+    }
+  });
+  updateArticleFilterStatus(filtered.length, activeArticleFilter);
+}
+
 async function renderArticles() {
   if (!articleLists.length) return;
   try {
     const dataPath = location.pathname.includes("/knowledge/") ? "../content/articles.json" : "./content/articles.json";
     const response = await fetch(dataPath);
-    const articles = await response.json();
-    articleLists.forEach((list) => {
-      const limit = Number(list.dataset.limit || articles.length);
-      list.innerHTML = "";
-      articles.slice(0, limit).forEach((article) => list.appendChild(createArticleCard(article)));
-    });
+    loadedArticles = await response.json();
+    renderArticleList();
   } catch (error) {
     articleLists.forEach((list) => {
       list.innerHTML = '<p class="article-error">Публикации временно не загрузились. Обновите страницу позже.</p>';
     });
   }
+}
+
+if (articleFilterButtons.length) {
+  articleFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeArticleFilter = button.dataset.articleFilter;
+      articleFilterButtons.forEach((item) => item.classList.toggle("is-active", item === button));
+      renderArticleList();
+      document.querySelector("#articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 renderArticles();

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>База знаний по цифровизации бизнеса | Элдокс</title>
+    <meta
+      name="description"
+      content="Публикации Элдокс о Saby, ЭДО, сайтах, CRM, заявках и автоматизации бизнеса: что меняется, кого касается и какие процессы стоит проверить."
+    />
+    <link rel="canonical" href="https://biggest1978.github.io/eldox-saby-preview/v2/knowledge/index.html" />
+    <meta property="og:title" content="База знаний по цифровизации бизнеса — Элдокс" />
+    <meta property="og:description" content="Практические материалы про Saby, сайты, CRM, заявки и автоматизацию." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://biggest1978.github.io/eldox-saby-preview/v2/knowledge/index.html" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Навигация">
+      <a class="brand" href="../index.html" aria-label="Элдокс">
+        <img class="brand-logo" src="../assets/eldoks_logo_header.png" alt="Элдокс" />
+      </a>
+      <nav>
+        <a href="../index.html">Главная</a>
+        <a href="../saby/index.html">Saby</a>
+        <a href="../sites/index.html">Сайты</a>
+        <a href="../crm/index.html">CRM</a>
+        <a href="./index.html">База знаний</a>
+        <a href="../about/index.html">О нас</a>
+      </nav>
+      <a class="topbar-cta" href="#request">Предложить тему</a>
+    </header>
+
+    <main id="top">
+      <section class="page-hero page-hero-light">
+        <div>
+          <p class="eyebrow">База знаний</p>
+          <h1>Разбираем изменения и практические решения для цифровизации бизнеса</h1>
+          <p class="hero-lead dark-lead">
+            Здесь будут материалы про Saby, ЭДО, сайты, CRM, заявки, автоматизацию и нормативные изменения. Каждый
+            материал должен отвечать на вопрос: что изменилось, кого касается и какой процесс стоит проверить.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#articles">Смотреть публикации</a>
+            <a class="button button-dark" href="#request">Предложить тему</a>
+          </div>
+        </div>
+        <aside class="hero-summary hero-summary-light">
+          <strong>Категории</strong>
+          <ul>
+            <li>Saby и ЭДО;</li>
+            <li>сайты и заявки;</li>
+            <li>CRM и продажи;</li>
+            <li>боты и интеграции;</li>
+            <li>изменения в цифровизации бизнеса.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section id="articles" class="section section-muted">
+        <div class="section-heading split">
+          <div>
+            <p class="section-kicker">Публикации</p>
+            <h2>Витрина материалов</h2>
+          </div>
+          <p>
+            Здесь собираются прикладные разборы: что изменилось, почему это важно для бизнеса и какой процесс стоит
+            проверить. Новые материалы будут добавляться через контентный контур, чтобы раздел регулярно обновлялся.
+          </p>
+        </div>
+        <div class="article-grid" data-articles-list data-limit="12"></div>
+      </section>
+
+      <section id="request" class="request section">
+        <div class="request-copy">
+          <p class="section-kicker">Тема для разбора</p>
+          <h2>Подскажите, какой вопрос стоит разобрать следующим</h2>
+          <p>Можно предложить тему про Saby, ЭДО, сайт, CRM, заявки, ботов, интеграции или нормативные изменения.</p>
+        </div>
+        <form class="request-form" id="requestForm">
+          <label>Имя<input type="text" name="name" placeholder="Как к вам обращаться" required /></label>
+          <label>Телефон или email<input type="text" name="contact" placeholder="Куда ответить" required /></label>
+          <label>Тема<textarea name="task" placeholder="Например: как понять, нужна ли CRM, если заявки пока ведем в Excel" required></textarea></label>
+          <button class="button button-primary" type="submit">Отправить тему</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <strong>Элдокс</strong>
+      <span>База знаний по Saby, сайтам, CRM и цифровизации бизнеса</span>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

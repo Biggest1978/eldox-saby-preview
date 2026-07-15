@@ -8,6 +8,7 @@ const price = document.querySelector("#price");
 const priceNote = document.querySelector("#priceNote");
 const requestForm = document.querySelector("#requestForm");
 const formStatus = document.querySelector("#formStatus");
+const articleLists = document.querySelectorAll("[data-articles-list]");
 
 let activeTab = document.querySelector("[data-calc-tab].is-active")?.dataset.calcTab || "saby";
 
@@ -140,3 +141,42 @@ if (requestForm) {
     renderScenarioOptions();
   });
 }
+
+function resolveArticlePath(path) {
+  const depth = location.pathname.includes("/knowledge/") ? "../" : "./";
+  return path.replace("../", depth);
+}
+
+function createArticleCard(article) {
+  const link = document.createElement("a");
+  link.className = "article-card";
+  link.href = resolveArticlePath(article.url);
+  link.innerHTML = `
+    <img src="${resolveArticlePath(article.image)}" alt="" />
+    <span>${article.category}</span>
+    <h3>${article.title}</h3>
+    <p>${article.excerpt}</p>
+    <small>${article.date}</small>
+  `;
+  return link;
+}
+
+async function renderArticles() {
+  if (!articleLists.length) return;
+  try {
+    const dataPath = location.pathname.includes("/knowledge/") ? "../content/articles.json" : "./content/articles.json";
+    const response = await fetch(dataPath);
+    const articles = await response.json();
+    articleLists.forEach((list) => {
+      const limit = Number(list.dataset.limit || articles.length);
+      list.innerHTML = "";
+      articles.slice(0, limit).forEach((article) => list.appendChild(createArticleCard(article)));
+    });
+  } catch (error) {
+    articleLists.forEach((list) => {
+      list.innerHTML = '<p class="article-error">Публикации временно не загрузились. Обновите страницу позже.</p>';
+    });
+  }
+}
+
+renderArticles();

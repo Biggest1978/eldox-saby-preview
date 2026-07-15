@@ -736,6 +736,107 @@ input[type="range"] {
   box-shadow: 0 12px 34px rgba(14, 27, 56, 0.08);
 }
 
+.proof-band {
+  background:
+    linear-gradient(135deg, rgba(56, 107, 255, 0.08), rgba(78, 223, 242, 0.08)),
+    var(--white);
+}
+
+.proof-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(520px, 1.12fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.proof-panel {
+  position: sticky;
+  top: 104px;
+  padding: 32px;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.proof-panel p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.metric-grid article {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.metric-grid strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--yellow);
+  font-size: 26px;
+}
+
+.metric-grid span {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.proof-list {
+  display: grid;
+  gap: 18px;
+}
+
+.proof-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+  gap: 22px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(14, 27, 56, 0.08);
+}
+
+.proof-card strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.proof-card span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.proof-card p {
+  margin-bottom: 10px;
+}
+
+.proof-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.proof-card li + li {
+  margin-top: 6px;
+}
+
 .comparison-section {
   background: var(--white);
 }
@@ -1011,6 +1112,7 @@ footer span {
   .split,
   .section-heading.split,
   .insight,
+  .proof-layout,
   .calc-shell,
   .process,
   .request {
@@ -1025,8 +1127,13 @@ footer span {
   .solution-grid,
   .case-grid,
   .article-grid,
-  .compare-grid {
+  .compare-grid,
+  .proof-card {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .proof-panel {
+    position: static;
   }
 
   .saby-grid {
@@ -1083,9 +1190,15 @@ footer span {
   .solution-grid,
   .case-grid,
   .compare-grid,
+  .proof-layout,
+  .proof-card,
   .article-grid,
   .tabs,
   .process-visual {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid {
     grid-template-columns: 1fr;
   }
 

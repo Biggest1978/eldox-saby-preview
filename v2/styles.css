@@ -420,12 +420,12 @@ p {
 
 .pain-layout {
   display: grid;
-  grid-template-columns: minmax(360px, 1.1fr) repeat(2, minmax(260px, 0.65fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
 .pain-layout article {
-  min-height: 330px;
+  min-height: 270px;
   padding: 30px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -433,17 +433,12 @@ p {
 }
 
 .pain-feature {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background:
-    linear-gradient(135deg, rgba(78, 223, 242, 0.16), transparent 46%),
-    #101a2e !important;
-  color: var(--white);
+  background: var(--white);
+  color: var(--ink);
 }
 
 .pain-feature p {
-  color: rgba(255, 255, 255, 0.76);
+  color: var(--muted);
 }
 
 .pain-layout span,
@@ -531,12 +526,13 @@ p {
 }
 
 .solution-primary {
-  background: var(--ink);
-  color: var(--white);
+  border-color: rgba(56, 107, 255, 0.34);
+  background: linear-gradient(180deg, #ffffff, #f2f6ff);
+  box-shadow: 0 18px 45px rgba(56, 107, 255, 0.12);
 }
 
 .solution-primary p {
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--muted);
 }
 
 .calculator {
@@ -765,12 +761,16 @@ input[type="range"] {
 
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 14px;
   margin-top: 24px;
 }
 
 .metric-grid article {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.42fr) 1fr;
+  gap: 14px;
+  align-items: start;
   padding: 18px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
@@ -779,9 +779,10 @@ input[type="range"] {
 
 .metric-grid strong {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   color: var(--yellow);
-  font-size: 26px;
+  font-size: 21px;
+  line-height: 1.15;
 }
 
 .metric-grid span {
@@ -1199,6 +1200,10 @@ footer span {
   }
 
   .metric-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid article {
     grid-template-columns: 1fr;
   }
 

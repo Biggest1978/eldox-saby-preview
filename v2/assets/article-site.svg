@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-label="Путь заявки на сайте">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0c1425"/>
+      <stop offset="1" stop-color="#1f3158"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="620" fill="url(#bg)"/>
+  <rect x="95" y="90" width="455" height="360" rx="28" fill="#ffffff" opacity=".95"/>
+  <rect x="130" y="130" width="180" height="18" rx="9" fill="#2447ff"/>
+  <rect x="130" y="190" width="340" height="36" rx="18" fill="#101a2e"/>
+  <rect x="130" y="250" width="290" height="20" rx="10" fill="#8da0c2"/>
+  <rect x="130" y="294" width="250" height="20" rx="10" fill="#8da0c2"/>
+  <rect x="130" y="365" width="170" height="52" rx="12" fill="#ffd91a"/>
+  <path d="M585 270 H740 V180 H905" fill="none" stroke="#49dff2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M740 270 V390 H905" fill="none" stroke="#49dff2" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
+  <g fill="#ffffff">
+    <rect x="905" y="125" width="210" height="110" rx="20" opacity=".14"/>
+    <rect x="905" y="335" width="210" height="110" rx="20" opacity=".14"/>
+    <text x="938" y="184" font-family="Arial, sans-serif" font-size="22" font-weight="700">Заявка</text>
+    <text x="938" y="394" font-family="Arial, sans-serif" font-size="22" font-weight="700">Ответственный</text>
+  </g>
+  <circle cx="740" cy="270" r="26" fill="#ffd91a"/>
+</svg>

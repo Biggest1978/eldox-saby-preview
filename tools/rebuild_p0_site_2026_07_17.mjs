@@ -216,7 +216,7 @@ function articleCards(root = ".", linked = false) {
     <span>${tag}</span>
     <h3>${title}</h3>
     <p>${text}</p>
-    <small>Материал для ближайшей публикации</small>
+    <small>${linked ? "Читать материал" : "Открыть разбор"}</small>
   ${close}`;
   }).join("");
 }
@@ -279,35 +279,60 @@ function renderHome() {
       <p>Если вы не знаете, какой продукт Saby нужен, начните с ситуации. На детальных страницах объясняем человеческим языком, зачем нужен каждый блок и что влияет на расчет.</p>
     </div>
     <div class="saby-grid">
-      ${directions.map((item) => `<a class="saby-card" href="./saby-directions/${item.slug}/index.html"><strong>${item.label}</strong><span>${item.card}</span></a>`).join("")}
+      ${directions.map((item) => `<a class="saby-card" href="./saby-directions/${item.slug}/index.html"><strong>${item.label}</strong><span>${item.card}</span><em>Подробнее</em></a>`).join("")}
     </div>
   </section>
 
   <section class="section calculator" id="calculator">
-    <div class="section-heading split">
+    <div class="calc-shell">
       <div>
         <p class="section-kicker">Ориентир по стоимости</p>
         <h2>Расчет зависит от региона, продукта и состава запуска</h2>
+        <p>Здесь человек должен быстро прикинуть порядок бюджета, а не читать универсальный прайс. Точный расчет появится после уточнения региона, пользователей и работ по настройке.</p>
+        <div class="calc-note-list">
+          <span>1. Выберите направление</span>
+          <span>2. Укажите регион и масштаб</span>
+          <span>3. Оставьте задачу на точный расчет</span>
+        </div>
       </div>
-      <p>Калькулятор оставляем как общий блок: сначала выбирается направление, затем регион, пользователи и дополнительные работы. Сейчас это прототип логики, без случайных цен и без устаревшего универсального прайса.</p>
-    </div>
-    <div class="tabs"><button>Saby</button><button>Сайты</button><button>CRM</button><button>Боты</button></div>
-    <div class="direction-proof">
-      <article><strong>Регион</strong><p>Условия подключения могут отличаться, поэтому Москва, Владивосток и другие города считаются отдельно.</p></article>
-      <article><strong>Состав задачи</strong><p>ЭДО, отчетность, кадры, торговля и маркировка требуют разных настроек и разного объема запуска.</p></article>
-      <article><strong>Люди и поддержка</strong><p>На расчет влияют пользователи, организации, обучение команды и сопровождение после старта.</p></article>
+      <div class="calc-card">
+        <div class="tabs"><button class="tab is-active">Saby</button><button class="tab">Сайты</button><button class="tab">CRM</button><button class="tab">Боты</button></div>
+        <label>Что нужно запустить
+          <select><option>ЭДО и документы</option><option>Отчетность</option><option>Кадры и КЭДО</option><option>Торговля, склад или маркировка</option></select>
+        </label>
+        <label>Регион подключения
+          <select><option>Москва и область</option><option>Санкт-Петербург</option><option>Владивосток</option><option>Другой регион</option></select>
+        </label>
+        <label>Пользователи и организации
+          <input type="range" min="1" max="50" value="8" />
+        </label>
+        <div class="calc-result">
+          <span>Что покажем после уточнения</span>
+          <strong>ориентир по лицензии + состав запуска</strong>
+          <p>Без случайных цен: сначала собираем параметры, потом подтверждаем актуальные условия и работы.</p>
+        </div>
+        ${button("#request", "Получить расчет")}
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="section-heading split">
       <div>
-        <p class="section-kicker">Что меняется в цифровизации бизнеса</p>
-        <h2>Разбираем изменения, которые влияют на документы, отчетность и заявки</h2>
+        <p class="section-kicker">Полезные разборы</p>
+        <h2>Помогаем понять, что проверить до покупки или настройки сервиса</h2>
       </div>
-      <p>Публикации помогают увидеть, что Элдокс занимается не только подключением Saby, но и более широкими задачами: сайтами, CRM, ботами и тем, как бизнес получает и обрабатывает обращения.</p>
+      <p>Этот блок не про “новости ради новостей”. Здесь будут короткие материалы для руководителя, бухгалтера или ответственного сотрудника: что изменилось, где может быть риск и с какого шага начать.</p>
     </div>
-    <div class="article-grid">${articleCards(".")}</div>
+    <div class="article-showcase">
+      <div class="article-showcase-lead">
+        <p class="section-kicker">Зачем читать</p>
+        <h3>Чтобы прийти к заявке уже с понятной задачей</h3>
+        <p>Если вы узнаете свою ситуацию в разборе, проще выбрать направление Saby или понять, что рядом нужен сайт, CRM или бот.</p>
+        ${button("./knowledge/index.html", "Перейти в базу знаний", true)}
+      </div>
+      <div class="article-grid compact">${articleCards(".")}</div>
+    </div>
     <div class="section-actions">${button("./knowledge/index.html", "Все публикации", true)}</div>
   </section>
 
@@ -381,7 +406,7 @@ function renderCatalog() {
       <div><p class="section-kicker">Основные продукты</p><h2>Что обычно входит в запуск</h2></div>
       <p>На каждой странице есть ситуации, состав работ, факторы цены, мини-кейс и ответы на вопросы. Это помогает не покупать лишнее и не запускать сервис вслепую.</p>
     </div>
-    <div class="saby-grid">${directions.map((item) => `<a class="saby-card" href="./${item.slug}/index.html"><strong>${item.label}</strong><span>${item.card}</span></a>`).join("")}</div>
+    <div class="saby-grid">${directions.map((item) => `<a class="saby-card" href="./${item.slug}/index.html"><strong>${item.label}</strong><span>${item.card}</span><em>Подробнее</em></a>`).join("")}</div>
   </section>
   <section class="section section-dark">
     <div class="section-heading"><p class="section-kicker">Если сомневаетесь</p><h2>Можно не знать название продукта</h2><p>Достаточно описать, что сейчас неудобно: документы, сроки, сотрудники, склад, маркировка или заявки. Мы предложим стартовый вариант и объясним, почему именно он.</p></div>

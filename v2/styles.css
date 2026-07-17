@@ -930,7 +930,9 @@ p {
 }
 
 .calculator {
-  background: #0b1223;
+  background:
+    radial-gradient(circle at 80% 18%, rgba(78, 223, 242, 0.18), transparent 28%),
+    linear-gradient(135deg, #071020 0%, #0d1830 54%, #101d37 100%);
   color: var(--white);
 }
 
@@ -945,6 +947,22 @@ p {
   align-items: center;
 }
 
+.calc-note-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.calc-note-list span {
+  display: block;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 800;
+}
+
 .calc-card,
 .request-form {
   display: grid;
@@ -954,6 +972,10 @@ p {
   background: var(--white);
   color: var(--ink);
   box-shadow: var(--shadow);
+}
+
+.calc-card .button {
+  width: 100%;
 }
 
 .tabs {
@@ -1029,7 +1051,9 @@ input[type="range"] {
 .calc-result {
   padding: 22px;
   border-radius: var(--radius);
-  background: #f2f6ff;
+  background:
+    linear-gradient(135deg, rgba(78, 223, 242, 0.16), rgba(244, 210, 54, 0.12)),
+    #f2f6ff;
 }
 
 .calc-result span {
@@ -1038,6 +1062,10 @@ input[type="range"] {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.calculator .calc-result p {
+  color: var(--muted);
 }
 
 .calc-result strong {
@@ -1295,6 +1323,34 @@ input[type="range"] {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.article-grid.compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.article-showcase {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.article-showcase-lead {
+  position: sticky;
+  top: 108px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-large);
+  background:
+    linear-gradient(135deg, rgba(56, 107, 255, 0.08), rgba(78, 223, 242, 0.08)),
+    var(--white);
+}
+
+.article-showcase-lead h3 {
+  margin: 0 0 14px;
+  font-size: 30px;
+  line-height: 1.12;
+}
+
 .article-filter-status {
   margin: -8px 0 24px;
   color: var(--blue);
@@ -1307,6 +1363,8 @@ input[type="range"] {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
   box-shadow: 0 12px 34px rgba(14, 27, 56, 0.08);
 }
 
@@ -1342,8 +1400,12 @@ input[type="range"] {
 }
 
 .article-card small {
+  display: inline-flex;
+  width: fit-content;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--yellow);
   margin-bottom: 20px;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 800;
 }
 
@@ -1589,7 +1651,8 @@ footer span {
 }
 
 .saby-card strong,
-.saby-card span {
+.saby-card span,
+.saby-card em {
   display: block;
 }
 
@@ -1601,6 +1664,16 @@ footer span {
 .saby-card span {
   color: var(--muted);
   line-height: 1.55;
+}
+
+.saby-card em {
+  width: fit-content;
+  margin-top: 18px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--yellow);
+  color: var(--ink);
+  font-style: normal;
+  font-weight: 900;
 }
 
 .case-panel {
@@ -1815,8 +1888,14 @@ footer span {
   .direction-proof,
   .article-grid,
   .tabs,
+  .article-showcase,
+  .article-grid.compact,
   .process-visual {
     grid-template-columns: 1fr;
+  }
+
+  .article-showcase-lead {
+    position: static;
   }
 
   .work-steps article + article {

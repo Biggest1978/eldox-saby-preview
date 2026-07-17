@@ -16,6 +16,69 @@ let loadedArticles = [];
 let activeArticleFilter = "all";
 let activeTab = document.querySelector("[data-calc-tab].is-active")?.dataset.calcTab || "saby";
 
+const sabyDirectionLinks = [
+  ["edo/index.html", "ЭДО", "документы и контрагенты"],
+  ["reporting/index.html", "Отчетность", "отчеты, требования, сверки"],
+  ["accounting/index.html", "Бухгалтерия и учет", "счета, документы, учет"],
+  ["hr/index.html", "Кадры и зарплата", "сотрудники и кадровые документы"],
+  ["trade/index.html", "Торговля и склад", "кассы, склад, точки продаж"],
+  ["marking/index.html", "Маркировка", "Честный знак, ЕГАИС, Меркурий"],
+];
+
+function enhanceSabyMenu() {
+  const nav = document.querySelector(".topbar nav");
+  if (!nav) return;
+
+  const bindMenu = (group) => {
+    const trigger = group.querySelector(":scope > a");
+    group.addEventListener("pointerenter", () => group.classList.add("is-open"));
+    group.addEventListener("pointerleave", () => group.classList.remove("is-open"));
+    group.addEventListener("focusin", () => group.classList.add("is-open"));
+    group.addEventListener("focusout", (event) => {
+      if (!group.contains(event.relatedTarget)) group.classList.remove("is-open");
+    });
+    trigger?.addEventListener("click", (event) => {
+      if (!group.classList.contains("is-open")) {
+        event.preventDefault();
+        group.classList.add("is-open");
+      }
+    });
+  };
+
+  const existingGroup = nav.querySelector(".nav-group");
+  if (existingGroup?.querySelector(".nav-menu")) {
+    bindMenu(existingGroup);
+    return;
+  }
+
+  const trigger = Array.from(nav.querySelectorAll("a")).find((link) => link.textContent.trim() === "Направления Saby");
+  if (!trigger) return;
+
+  const catalogUrl = new URL(trigger.getAttribute("href"), window.location.href);
+  const group = document.createElement("div");
+  group.className = "nav-group";
+
+  const mainLink = trigger.cloneNode(true);
+  group.appendChild(mainLink);
+
+  const menu = document.createElement("div");
+  menu.className = "nav-menu";
+  menu.setAttribute("aria-label", "Направления Saby");
+
+  sabyDirectionLinks.forEach(([path, title, note]) => {
+    const item = document.createElement("a");
+    item.href = new URL(path, catalogUrl).href;
+    item.innerHTML = `${title}<span>${note}</span>`;
+    menu.appendChild(item);
+  });
+
+  group.appendChild(menu);
+  trigger.replaceWith(group);
+  bindMenu(group);
+}
+
+enhanceSabyMenu();
+
 const calculator = {
   saby: {
     label: "Saby",

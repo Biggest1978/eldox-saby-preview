@@ -83,13 +83,22 @@ a {
   align-items: center;
 }
 
+.nav-group::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -18px;
+  right: -18px;
+  height: 18px;
+}
+
 .nav-group > a {
   font-weight: 800;
 }
 
 .nav-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: calc(100% + 8px);
   left: 50%;
   width: min(720px, calc(100vw - 40px));
   display: grid;
@@ -107,7 +116,8 @@ a {
 }
 
 .nav-group:hover .nav-menu,
-.nav-group:focus-within .nav-menu {
+.nav-group:focus-within .nav-menu,
+.nav-group.is-open .nav-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, 0);
@@ -159,8 +169,8 @@ a {
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.55fr);
   gap: 48px;
   align-items: center;
-  min-height: 560px;
-  padding: 94px clamp(20px, 6vw, 88px) 72px;
+  min-height: 480px;
+  padding: 76px clamp(20px, 6vw, 88px) 64px;
 }
 
 .page-hero-dark {
@@ -174,6 +184,22 @@ a {
   background:
     radial-gradient(circle at 76% 28%, rgba(56, 107, 255, 0.12), transparent 28%),
     linear-gradient(135deg, #f7faff, #ffffff);
+}
+
+.saby-directions-page .page-hero {
+  min-height: auto;
+  align-items: start;
+  padding-top: 64px;
+  padding-bottom: 56px;
+}
+
+.saby-directions-page .section-heading {
+  margin-bottom: 34px;
+}
+
+.saby-directions-page .section {
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
 .page-hero-light .eyebrow {
@@ -459,7 +485,7 @@ p {
 .map-node:nth-child(5) { transform: translate(142px, 110px); }
 
 .section {
-  padding: 104px clamp(20px, 6vw, 88px);
+  padding: 86px clamp(20px, 6vw, 88px);
 }
 
 .section-muted {
@@ -603,7 +629,7 @@ p {
 
 .solution-card {
   position: relative;
-  min-height: 270px;
+  min-height: 250px;
   padding: 30px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -624,7 +650,9 @@ p {
 
 .solution-primary {
   border-color: rgba(56, 107, 255, 0.34);
-  background: linear-gradient(180deg, #ffffff, #f2f6ff);
+  background:
+    radial-gradient(circle at 94% 92%, rgba(78, 223, 242, 0.24), transparent 28%),
+    linear-gradient(180deg, #ffffff, #eef4ff);
   box-shadow: 0 18px 45px rgba(56, 107, 255, 0.12);
 }
 
@@ -634,6 +662,7 @@ p {
 
 .catalog-hero-list {
   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin-top: 24px;
   padding: 0;
@@ -641,12 +670,41 @@ p {
 }
 
 .catalog-hero-list li {
-  padding: 14px 16px;
+  min-height: 132px;
+  padding: 16px;
   border-left: 4px solid var(--blue);
   border-radius: var(--radius);
-  background: rgba(56, 107, 255, 0.08);
-  color: var(--muted);
-  line-height: 1.5;
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 10px 26px rgba(14, 27, 56, 0.07);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.catalog-hero-list strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--blue);
+}
+
+.direction-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.direction-proof article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, #ffffff, #f7faff);
+}
+
+.direction-proof strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
 }
 
 .direction-layout {
@@ -1279,6 +1337,7 @@ footer span {
 
   .pain-layout,
   .solution-grid,
+  .direction-proof,
   .case-grid,
   .article-grid,
   .compare-grid,
@@ -1292,6 +1351,10 @@ footer span {
 
   .saby-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .saby-directions-page .page-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
   }
 }
 
@@ -1347,6 +1410,10 @@ footer span {
     padding: 64px 16px 52px;
   }
 
+  .saby-directions-page .page-hero {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     min-height: auto;
     padding-top: 64px;
@@ -1393,12 +1460,14 @@ footer span {
 
   .pain-layout,
   .route-cta,
+  .catalog-hero-list,
   .saby-grid,
   .solution-grid,
   .case-grid,
   .compare-grid,
   .proof-layout,
   .proof-card,
+  .direction-proof,
   .article-grid,
   .tabs,
   .process-visual {

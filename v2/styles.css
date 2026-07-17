@@ -93,7 +93,16 @@ a {
 }
 
 .nav-group > a {
-  font-weight: 800;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.nav-group:hover > a,
+.nav-group:focus-within > a,
+.nav-group.is-open > a,
+.nav-group.is-current > a {
+  color: var(--ink);
+  font-weight: 900;
 }
 
 .nav-menu {
@@ -200,6 +209,184 @@ a {
 .saby-directions-page .section {
   padding-top: 72px;
   padding-bottom: 72px;
+}
+
+.saby-catalog-hero,
+.saby-product-hero {
+  border-bottom: 1px solid var(--line);
+}
+
+.saby-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.saby-product-card {
+  display: grid;
+  gap: 14px;
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 18px 48px rgba(12, 25, 55, 0.08);
+}
+
+.saby-product-card span,
+.situation-grid article span,
+.work-steps article span,
+.before-after article span {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.saby-product-card h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.saby-product-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.situation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.situation-grid-compact {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.situation-grid article {
+  min-height: 260px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.situation-grid article:nth-child(1) {
+  background: linear-gradient(135deg, #0d1830, #142746);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.situation-grid article:nth-child(1) p {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.situation-grid h3 {
+  margin: 18px 0 12px;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.situation-grid p,
+.work-steps p,
+.price-factor-grid p,
+.included-grid article {
+  color: var(--muted);
+  line-height: 1.58;
+}
+
+.before-after {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.before-after article {
+  padding: 34px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.before-after article:nth-child(2) {
+  background:
+    linear-gradient(135deg, rgba(78, 223, 242, 0.15), rgba(56, 107, 255, 0.1)),
+    var(--white);
+  border-color: rgba(56, 107, 255, 0.24);
+}
+
+.before-after p {
+  margin: 14px 0 0;
+  font-size: 23px;
+  line-height: 1.36;
+  font-weight: 850;
+}
+
+.section-soft {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(78, 223, 242, 0.1), transparent 24%),
+    #f8fbff;
+}
+
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.included-grid article {
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  font-weight: 800;
+}
+
+.price-factor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.section-dark .price-factor-grid article {
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.section-dark .price-factor-grid strong {
+  color: var(--white);
+}
+
+.section-dark .price-factor-grid p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.work-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.work-steps article {
+  display: grid;
+  gap: 16px;
+  min-height: 190px;
+  padding: 26px;
+  background: var(--white);
+}
+
+.work-steps article + article {
+  border-left: 1px solid var(--line);
 }
 
 .page-hero-light .eyebrow {
@@ -1337,6 +1524,11 @@ footer span {
 
   .pain-layout,
   .solution-grid,
+  .saby-product-grid,
+  .situation-grid,
+  .included-grid,
+  .price-factor-grid,
+  .work-steps,
   .direction-proof,
   .case-grid,
   .article-grid,
@@ -1462,6 +1654,12 @@ footer span {
   .route-cta,
   .catalog-hero-list,
   .saby-grid,
+  .saby-product-grid,
+  .situation-grid,
+  .included-grid,
+  .price-factor-grid,
+  .before-after,
+  .work-steps,
   .solution-grid,
   .case-grid,
   .compare-grid,
@@ -1472,6 +1670,11 @@ footer span {
   .tabs,
   .process-visual {
     grid-template-columns: 1fr;
+  }
+
+  .work-steps article + article {
+    border-left: 0;
+    border-top: 1px solid var(--line);
   }
 
   .metric-grid {

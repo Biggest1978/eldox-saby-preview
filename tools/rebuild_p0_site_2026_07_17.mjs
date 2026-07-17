@@ -207,6 +207,75 @@ function button(href, label, secondary = false) {
   return `<a class="button ${secondary ? "secondary" : ""}" href="${href}">${label}</a>`;
 }
 
+const directionPrompts = {
+  edo: "Контрагент просит электронные документы?",
+  reporting: "Сроки отчетов держатся вручную?",
+  accounting: "Первичка и сверки разъехались?",
+  hr: "Кадровые документы ходят по чатам?",
+  trade: "Касса, склад и документы не сходятся?",
+  marking: "Маркировка и госсистемы путают команду?"
+};
+
+function directionCard(item, href) {
+  return `<a class="saby-card product-card product-card-${item.slug}" href="${href}">
+    <span class="direction-mark direction-mark-${item.slug}" aria-hidden="true"></span>
+    <small>${directionPrompts[item.slug]}</small>
+    <strong>${item.label}</strong>
+    <span>${item.card}</span>
+    <em>Смотреть решение →</em>
+  </a>`;
+}
+
+function directionCardGrid(root = ".") {
+  return directions.map((item) => directionCard(item, `${root}/${item.slug}/index.html`)).join("");
+}
+
+function homeDiagnosticCards() {
+  const cards = [
+    ["edo", "Документы", "Вы впервые переходите на электронные документы", "Контрагент просит отправлять УПД, акты или счета через электронный обмен. Покажем, что подключить и где смотреть статус.", "./saby-directions/edo/index.html"],
+    ["reporting", "Отчетность", "Вы держите отчеты и требования вручную", "Сроки, уведомления и ответы держатся на внимательности одного сотрудника. Saby помогает видеть ближайшие действия заранее.", "./saby-directions/reporting/index.html"],
+    ["hr", "Кадры", "Кадровые документы копятся в бумаге", "Заявления, приказы и подписи ходят по кабинетам и чатам. КЭДО помогает сделать этот путь понятнее для HR и сотрудников.", "./saby-directions/hr/index.html"],
+    ["trade", "Торговля", "Склад, касса и документы не сходятся", "Продажи, остатки, УПД и маркировка требуют единого порядка, чтобы ошибки не всплывали слишком поздно.", "./saby-directions/trade/index.html"]
+  ];
+
+  return `<div class="diagnostic-grid">
+    ${cards.map(([slug, tag, title, text, href]) => `<a class="diagnostic-card diagnostic-card-${slug}" href="${href}">
+      <span class="direction-mark direction-mark-${slug}" aria-hidden="true"></span>
+      <small>${tag}</small>
+      <h3>${title}</h3>
+      <p>${text}</p>
+      <em>Подробнее →</em>
+    </a>`).join("")}
+  </div>`;
+}
+
+function launchTimeline(item) {
+  const labels = ["Уточняем задачу", "Подбираем Saby", "Настраиваем", "Проверяем на работе"];
+  return `<div class="launch-timeline">
+    ${item.included.map((text, index) => `<article>
+      <span>0${index + 1}</span>
+      <h3>${labels[index] || "Передаем команде"}</h3>
+      <p>${text}</p>
+    </article>`).join("")}
+  </div>`;
+}
+
+function priceFormula(item) {
+  return `<div class="price-formula">
+    <div class="formula-result">
+      <span>Предварительный расчет</span>
+      <strong>регион + лицензия + пользователи + запуск</strong>
+      <p>Собираем эти параметры до сметы, чтобы не закладывать лишнее и не пропустить важную настройку.</p>
+    </div>
+    <div class="formula-factors">
+      ${item.factors.map((factor, index) => `<article>
+        <span>0${index + 1}</span>
+        <strong>${factor}</strong>
+      </article>`).join("")}
+    </div>
+  </div>`;
+}
+
 function articleCards(root = ".", linked = false) {
   return articles.map(([tag, title, text, img, slug]) => {
     const open = linked ? `<a class="article-card" href="${root}/knowledge/${slug}/index.html">` : `<article class="article-card">`;
@@ -294,12 +363,7 @@ function renderHome() {
       </div>
       <p>Вы впервые столкнулись с электронными документами? Устали держать отчетность на памяти одного человека? Видите, что склад, касса и документы живут отдельно? Мы начинаем с вашей конкретной задачи, а уже потом подбираем Saby.</p>
     </div>
-    <div class="equal-card-grid four">
-      <article><span>01</span><h3>Вы впервые переходите на электронные документы</h3><p>Контрагент просит отправлять УПД, акты или счета через электронный обмен. Мы поможем понять, что подключить и где смотреть статус.</p></article>
-      <article><span>02</span><h3>Вы держите отчеты и требования вручную</h3><p>Сроки, уведомления и ответы держатся на внимательности одного сотрудника. Saby помогает видеть ближайшие действия заранее.</p></article>
-      <article><span>03</span><h3>У вас кадровые документы копятся в бумаге</h3><p>Заявления, приказы и подписи ходят по кабинетам и чатам. КЭДО помогает сделать этот путь понятнее для HR и сотрудников.</p></article>
-      <article><span>04</span><h3>У вас склад, касса и документы не сходятся</h3><p>Продажи, остатки, УПД и маркировка требуют единого порядка, чтобы ошибки не всплывали слишком поздно.</p></article>
-    </div>
+    ${homeDiagnosticCards()}
   </section>
 
   <section class="section section-muted" id="directions">
@@ -310,9 +374,7 @@ function renderHome() {
       </div>
       <p>Если вы не знаете, какой продукт Saby нужен, начните с ситуации. На детальных страницах объясняем человеческим языком, зачем нужен каждый блок и что влияет на расчет.</p>
     </div>
-    <div class="saby-grid">
-      ${directions.map((item) => `<a class="saby-card" href="./saby-directions/${item.slug}/index.html"><strong>${item.label}</strong><span>${item.card}</span><em>Подробнее</em></a>`).join("")}
-    </div>
+    <div class="saby-grid product-grid">${directions.map((item) => directionCard(item, `./saby-directions/${item.slug}/index.html`)).join("")}</div>
   </section>
 
   <section class="section calculator" id="calculator">
@@ -327,23 +389,32 @@ function renderHome() {
           <span>3. Оставьте задачу на точный расчет</span>
         </div>
       </div>
-      <div class="calc-card">
+      <div class="calc-card calc-estimator">
         <div class="tabs"><button class="tab is-active">Saby</button><button class="tab">Сайты</button><button class="tab">CRM</button><button class="tab">Боты</button></div>
-        <label>Что нужно запустить
-          <select><option>ЭДО и документы</option><option>Отчетность</option><option>Кадры и КЭДО</option><option>Торговля, склад или маркировка</option></select>
-        </label>
-        <label>Регион подключения
-          <select><option>Москва и область</option><option>Санкт-Петербург</option><option>Владивосток</option><option>Другой регион</option></select>
-        </label>
-        <label>Пользователи и организации
-          <input type="range" min="1" max="50" value="8" />
-        </label>
-        <div class="calc-result">
-          <span>Что покажем после уточнения</span>
-          <strong>ориентир по лицензии + состав запуска</strong>
-          <p>Без случайных цен: сначала собираем параметры, потом подтверждаем актуальные условия и работы.</p>
+        <div class="calc-estimator-body">
+          <div class="calc-inputs">
+            <label>Что нужно запустить
+              <select><option>ЭДО и документы</option><option>Отчетность</option><option>Кадры и КЭДО</option><option>Торговля, склад или маркировка</option></select>
+            </label>
+            <label>Регион подключения
+              <select><option>Москва и область</option><option>Санкт-Петербург</option><option>Владивосток</option><option>Другой регион</option></select>
+            </label>
+            <label>Пользователи и организации
+              <input type="range" min="1" max="50" value="8" />
+            </label>
+          </div>
+          <div class="calc-preview">
+            <span>Предварительный ориентир</span>
+            <strong>Смета после уточнения</strong>
+            <div class="calc-meter" aria-hidden="true"><i style="width: 64%"></i></div>
+            <ul>
+              <li>лицензия и региональные условия;</li>
+              <li>пользователи, организации и роли;</li>
+              <li>настройка, обучение и первый рабочий запуск.</li>
+            </ul>
+            ${button("#request", "Отправить параметры")}
+          </div>
         </div>
-        ${button("#request", "Получить расчет")}
       </div>
     </div>
   </section>
@@ -428,16 +499,19 @@ function renderCatalog() {
   </section>
   <section class="section" id="situations">
     <div class="section-heading"><p class="section-kicker">Быстрый выбор</p><h2>Сначала найдите свою задачу</h2></div>
-    <div class="equal-card-grid three">
-      ${directions.map((item) => `<a href="./${item.slug}/index.html"><span>${item.label}</span><h3>${item.short}</h3><p>${item.card}</p></a>`).join("")}
-    </div>
+    <div class="saby-grid product-grid">${directionCardGrid(".")}</div>
   </section>
   <section class="section section-muted">
     <div class="section-heading split">
       <div><p class="section-kicker">Основные продукты</p><h2>Что обычно входит в запуск</h2></div>
       <p>На каждой странице есть ситуации, состав работ, факторы цены, мини-кейс и ответы на вопросы. Это помогает не покупать лишнее и не запускать сервис вслепую.</p>
     </div>
-    <div class="saby-grid">${directions.map((item) => `<a class="saby-card" href="./${item.slug}/index.html"><strong>${item.label}</strong><span>${item.card}</span><em>Подробнее</em></a>`).join("")}</div>
+    <div class="launch-timeline">
+      <article><span>01</span><h3>Понимаем задачу</h3><p>Сначала фиксируем, что именно мешает работе: документы, сроки, сотрудники, склад, маркировка или учет.</p></article>
+      <article><span>02</span><h3>Выбираем направление</h3><p>Подбираем Saby не по названию лицензии, а по тому, какую ежедневную задачу нужно закрыть.</p></article>
+      <article><span>03</span><h3>Считаем запуск</h3><p>Уточняем регион, пользователей, организации и работы по настройке, чтобы подготовить понятную смету.</p></article>
+      <article><span>04</span><h3>Запускаем в работе</h3><p>Помогаем команде пройти первый рабочий сценарий и понять, где смотреть статус.</p></article>
+    </div>
   </section>
   <section class="section section-dark">
     <div class="section-heading"><p class="section-kicker">Если сомневаетесь</p><h2>Можно не знать название продукта</h2><p>Достаточно описать, что сейчас неудобно: документы, сроки, сотрудники, склад, маркировка или заявки. Мы предложим стартовый вариант и объясним, почему именно он.</p></div>
@@ -471,14 +545,20 @@ function renderDirection(item) {
   </section>
   <section class="section">
     <div class="section-heading"><p class="section-kicker">Когда это нужно</p><h2>${item.situationsTitle}</h2></div>
-    <div class="equal-card-grid four">${item.situations.map(([title, text], index) => `<article><span>0${index + 1}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div>
+    <div class="scenario-flow scenario-flow-${item.slug}">
+      ${item.situations.map(([title, text], index) => `<article>
+        <span>0${index + 1}</span>
+        <h3>${title}</h3>
+        <p>${text}</p>
+      </article>`).join("")}
+    </div>
   </section>
   <section class="section section-muted">
     <div class="section-heading split">
       <div><p class="section-kicker">Что входит</p><h2>Собираем запуск вокруг вашей реальной задачи</h2></div>
       <p>Не начинаем с универсального прайса. Сначала уточняем, как сейчас работает компания, и только потом предлагаем состав Saby, настройки и поддержку.</p>
     </div>
-    <div class="included-grid">${item.included.map((text) => `<article>${text}</article>`).join("")}</div>
+    ${launchTimeline(item)}
   </section>
   <section class="section">
     <div class="case-panel">
@@ -491,7 +571,7 @@ function renderDirection(item) {
       <div><p class="section-kicker">Стоимость</p><h2>От чего зависит расчет</h2></div>
       <p>Точную стоимость подтверждаем после уточнения региона и состава работ. Ниже — факторы, которые чаще всего меняют расчет.</p>
     </div>
-    <div class="price-factor-grid">${item.factors.map((factor) => `<article><strong>${factor}</strong><p>Уточняем этот параметр до сметы, чтобы не закладывать лишнее и не пропустить важную настройку.</p></article>`).join("")}</div>
+    ${priceFormula(item)}
   </section>
   <section class="section">
     <div class="section-heading"><p class="section-kicker">FAQ</p><h2>Частые вопросы по направлению</h2></div>
@@ -627,9 +707,16 @@ function renderArticlePages() {
       <h1>${title}</h1>
       <p class="hero-lead dark-lead">${summary}</p>
       <img class="article-hero-image" src="../../assets/${img}" alt="" />
-      <section><h2>Коротко</h2><p>Материал помогает быстро понять, почему тема важна для бизнеса и что проверить у себя перед покупкой, настройкой или разговором со специалистом.</p></section>
-      <section><h2>Что проверить</h2><ul><li>какая задача мешает работе сейчас;</li><li>кто отвечает за следующий шаг;</li><li>какие данные нужны для расчета;</li><li>что можно запустить первым без лишнего объема.</li></ul></section>
-      <section><h2>Когда стоит обратиться</h2><p>Если вы узнаете свою ситуацию и хотите понять, с чего начать, опишите задачу. Мы подскажем направление и состав первого шага.</p></section>
+      <section class="article-brief"><h2>Коротко</h2><p>Материал помогает быстро понять, почему тема важна для бизнеса и что проверить у себя перед покупкой, настройкой или разговором со специалистом.</p></section>
+      <section class="article-checklist">
+        <div><h2>Что проверить</h2><p>Если хотя бы два пункта похожи на вашу ситуацию, лучше сначала разобрать задачу, а не покупать сервис по названию.</p></div>
+        <ul><li>какая задача мешает работе сейчас;</li><li>кто отвечает за следующий шаг;</li><li>какие данные нужны для расчета;</li><li>что можно запустить первым без лишнего объема.</li></ul>
+      </section>
+      <section class="article-callout">
+        <span>Следующий шаг</span>
+        <h2>Когда стоит обратиться</h2>
+        <p>Если вы узнаете свою ситуацию и хотите понять, с чего начать, опишите задачу. Мы подскажем направление и состав первого шага.</p>
+      </section>
     </article>
     ${requestSection("../..")}`;
     writePage(`knowledge/${slug}/index.html`, layout({

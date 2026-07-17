@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="eldox-icon-document" viewBox="0 0 32 32">
+    <path d="M9 4h10l5 5v19H9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M19 4v6h5M13 16h9M13 21h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-reporting" viewBox="0 0 32 32">
+    <rect x="5" y="6" width="22" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M5 12h22M11 4v5M21 4v5M10 18h4M18 18h4M10 23h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-accounting" viewBox="0 0 32 32">
+    <rect x="6" y="5" width="20" height="22" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M11 11h10M11 16h10M11 21h4M20 20l2 2 4-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="eldox-icon-hr" viewBox="0 0 32 32">
+    <circle cx="16" cy="11" r="5" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M7 27c1.6-6 16.4-6 18 0M22 8l4-2M10 8L6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-trade" viewBox="0 0 32 32">
+    <path d="M7 9h18l-2 11H10z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M7 9l-1-4H3M12 25h.1M22 25h.1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-marking" viewBox="0 0 32 32">
+    <rect x="6" y="6" width="20" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M11 11v10M15 11v10M20 11v10M11 21h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-region" viewBox="0 0 32 32">
+    <path d="M16 28s9-8 9-15a9 9 0 1 0-18 0c0 7 9 15 9 15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="16" cy="13" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+  <symbol id="eldox-icon-users" viewBox="0 0 32 32">
+    <circle cx="13" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M5 26c1.3-5 14.7-5 16 0M22 15a4 4 0 0 0 0-8M21 21c3 .2 5 1.8 6 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-launch" viewBox="0 0 32 32">
+    <path d="M16 4l5 9 7 3-7 3-5 9-5-9-7-3 7-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M16 12v8M12 16h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-support" viewBox="0 0 32 32">
+    <path d="M7 18a9 9 0 0 1 18 0v3a4 4 0 0 1-4 4h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M7 18h4v7H7zM21 18h4v5h-4zM14 25h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="eldox-icon-site" viewBox="0 0 32 32">
+    <rect x="5" y="7" width="22" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M5 13h22M10 19h8M21 19h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="eldox-icon-crm" viewBox="0 0 32 32">
+    <rect x="5" y="7" width="6" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="13" y="7" width="6" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <rect x="21" y="7" width="6" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M8 12h.1M16 16h.1M24 20h.1" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+</svg>

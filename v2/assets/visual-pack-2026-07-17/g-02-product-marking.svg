@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Маркировка: код товара, склад и госсистемы</title>
+  <desc id="desc">Иллюстрация Saby для маркировки товаров.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#071126"/><stop offset=".68" stop-color="#10294a"/><stop offset="1" stop-color="#071126"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#021027" flood-opacity=".42"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="46" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="176" y="208" width="344" height="344" rx="30" fill="#f7fbff"/>
+    <rect x="246" y="282" width="204" height="164" rx="22" fill="#e8f1ff"/>
+    <path d="M282 318v92M314 318v92M362 318v92M406 318v92" stroke="#10294a" stroke-width="14" stroke-linecap="round"/>
+    <path d="M282 468h132" stroke="#386bff" stroke-width="14" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="588" y="154" width="420" height="430" rx="30" fill="#0d1d36" stroke="#2c4c74"/>
+    <circle cx="720" cy="280" r="54" fill="#112c4d" stroke="#4edff2" stroke-width="10"/>
+    <circle cx="884" cy="280" r="54" fill="#112c4d" stroke="#ffd630" stroke-width="10"/>
+    <path d="M774 280h56" stroke="#7f94ad" stroke-width="8" stroke-linecap="round"/>
+    <rect x="674" y="398" width="246" height="20" rx="10" fill="#4edff2"/>
+    <rect x="674" y="454" width="200" height="14" rx="7" fill="#7f94ad"/>
+  </g>
+  <path d="M518 380h70" stroke="#ffd630" stroke-width="8" stroke-linecap="round"/>
+</svg>

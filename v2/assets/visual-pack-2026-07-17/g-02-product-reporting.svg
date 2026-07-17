@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Отчетность: календарь, требование и статус принятия</title>
+  <desc id="desc">Иллюстрация Saby для отчетности.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#071126"/><stop offset=".7" stop-color="#10294a"/><stop offset="1" stop-color="#071126"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#021027" flood-opacity=".42"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="46" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#4edff2"><path d="M90 178h1020M90 282h1020M90 386h1020M90 490h1020"/><path d="M220 90v580M412 90v580M604 90v580M796 90v580M988 90v580"/></g>
+  <g filter="url(#shadow)">
+    <rect x="156" y="128" width="520" height="460" rx="32" fill="#f7fbff"/>
+    <rect x="156" y="128" width="520" height="96" rx="32" fill="#dcecff"/>
+    <rect x="220" y="278" width="82" height="66" rx="16" fill="#e8f1ff"/><rect x="334" y="278" width="82" height="66" rx="16" fill="#e8f1ff"/><rect x="448" y="278" width="82" height="66" rx="16" fill="#ffd630"/>
+    <rect x="220" y="378" width="82" height="66" rx="16" fill="#e8f1ff"/><rect x="334" y="378" width="82" height="66" rx="16" fill="#4edff2"/><rect x="448" y="378" width="82" height="66" rx="16" fill="#e8f1ff"/>
+    <rect x="220" y="486" width="310" height="20" rx="10" fill="#10294a"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="640" y="226" width="390" height="260" rx="30" fill="#0d1d36" stroke="#2c4c74"/>
+    <rect x="690" y="282" width="132" height="24" rx="12" fill="#4edff2"/>
+    <rect x="690" y="336" width="260" height="14" rx="7" fill="#7f94ad"/>
+    <rect x="690" y="378" width="210" height="14" rx="7" fill="#7f94ad"/>
+    <circle cx="930" cy="402" r="54" fill="#10294a" stroke="#ffd630" stroke-width="12"/>
+    <path d="M904 400l20 20 46-58" fill="none" stroke="#ffd630" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

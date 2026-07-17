@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Система микроиконок Элдокс</title>
+  <desc id="desc">Превью набора иконок для сайта Элдокс.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f6f9ff"/><stop offset="1" stop-color="#eaf3ff"/></linearGradient>
+  </defs>
+  <rect width="1200" height="760" rx="46" fill="url(#bg)"/>
+  <g fill="none" stroke="#0b1327" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(120 120)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><path d="M46 28h42l20 20v54H46z"/><path d="M88 28v22h20M58 72h38M58 90h30"/></g>
+    <g transform="translate(300 120)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><rect x="34" y="36" width="62" height="66" rx="8"/><path d="M34 54h62M48 26v18M82 26v18M48 72h10M70 72h10M48 90h10"/></g>
+    <g transform="translate(480 120)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><rect x="36" y="30" width="58" height="72" rx="8"/><path d="M50 50h30M50 66h30M50 82h12M76 82l8 8 16-22"/></g>
+    <g transform="translate(660 120)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><circle cx="65" cy="50" r="16"/><path d="M36 102c7-28 51-28 58 0"/></g>
+    <g transform="translate(840 120)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><path d="M38 44h58l-8 38H48zM38 44l-4-14H24M54 100h.1M88 100h.1" stroke-width="5"/></g>
+    <g transform="translate(1020 120)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><rect x="36" y="36" width="58" height="58" rx="12"/><path d="M50 50v30M62 50v30M76 50v30M50 80h30"/></g>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-weight="800" font-size="24" fill="#0b1327" text-anchor="middle">
+    <text x="185" y="300">Документы</text><text x="365" y="300">Отчетность</text><text x="545" y="300">Учет</text><text x="725" y="300">Кадры</text><text x="905" y="300">Торговля</text><text x="1085" y="300">Маркировка</text>
+  </g>
+  <g fill="none" stroke="#386bff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(210 415)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><path d="M65 104s34-30 34-58a34 34 0 1 0-68 0c0 28 34 58 34 58z"/><circle cx="65" cy="46" r="12"/></g>
+    <g transform="translate(390 415)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><circle cx="56" cy="48" r="14"/><path d="M28 100c5-24 51-24 56 0M88 62a14 14 0 0 0 0-28M86 82c18 1 31 8 36 18"/></g>
+    <g transform="translate(570 415)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><path d="M65 28l18 32 26 10-26 10-18 32-18-32-26-10 26-10z"/><path d="M65 56v28M51 70h28"/></g>
+    <g transform="translate(750 415)"><rect width="130" height="130" rx="28" fill="#fff" stroke="#d8e3f2"/><rect x="32" y="42" width="66" height="52" rx="10"/><path d="M32 60h66M46 78h24M80 78h8"/></g>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-weight="800" font-size="24" fill="#386bff" text-anchor="middle">
+    <text x="275" y="595">Регион</text><text x="455" y="595">Пользователи</text><text x="635" y="595">Запуск</text><text x="815" y="595">Сайт</text>
+  </g>
+</svg>

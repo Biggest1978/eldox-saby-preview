@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Кадры и зарплата: заявление, приказ, подпись</title>
+  <desc id="desc">Иллюстрация Saby для кадровых документов.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#071126"/><stop offset=".68" stop-color="#10294a"/><stop offset="1" stop-color="#071126"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#021027" flood-opacity=".42"/></filter>
+  </defs>
+  <rect width="1200" height="760" rx="46" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="190" y="160" width="360" height="430" rx="32" fill="#f7fbff"/>
+    <circle cx="296" cy="270" r="58" fill="#dcecff"/>
+    <circle cx="296" cy="248" r="24" fill="#386bff"/><path d="M246 326c26-42 74-42 100 0" fill="#386bff"/>
+    <rect x="390" y="248" width="96" height="18" rx="9" fill="#10294a"/>
+    <rect x="390" y="304" width="110" height="14" rx="7" fill="#bdcce0"/>
+    <rect x="390" y="344" width="88" height="14" rx="7" fill="#bdcce0"/>
+    <rect x="248" y="452" width="226" height="56" rx="18" fill="#eef4ff"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="594" y="210" width="412" height="280" rx="30" fill="#0d1d36" stroke="#2c4c74"/>
+    <rect x="660" y="282" width="148" height="18" rx="9" fill="#4edff2"/>
+    <rect x="660" y="336" width="250" height="14" rx="7" fill="#7f94ad"/>
+    <path d="M670 412c36-38 78 20 120-14 34-28 58-38 96-14" fill="none" stroke="#ffd630" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="934" cy="296" r="42" fill="#10294a" stroke="#4edff2" stroke-width="8"/>
+  </g>
+  <path d="M550 374h70" stroke="#ffd630" stroke-width="8" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saby ЭДО — электронные документы с контрагентами | Элдокс</title>
+    <meta name="description" content="Saby ЭДО простым языком: кому нужен электронный документооборот, что входит в запуск, от чего зависит цена и что нужно для расчета." />
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Навигация">
+      <a class="brand" href="../../index.html" aria-label="Элдокс"><img class="brand-logo" src="../../assets/eldoks_logo_header.png" alt="Элдокс" /></a>
+      <nav>
+        <a href="../../index.html">Главная</a>
+        <a href="../index.html">Направления Saby</a>
+        <a href="../reporting/index.html">Отчетность</a>
+        <a href="../hr/index.html">Кадры</a>
+        <a href="../../knowledge/index.html">База знаний</a>
+      </nav>
+      <a class="topbar-cta" href="#request">Рассчитать ЭДО</a>
+    </header>
+    <main>
+      <section class="page-hero page-hero-dark">
+        <div>
+          <p class="eyebrow">Saby ЭДО</p>
+          <h1>Электронные документы с контрагентами без поиска оригиналов в почте и папках</h1>
+          <p class="hero-lead">Подходит, если контрагенты просят ЭДО, документы согласуют слишком долго или сотрудникам приходится вручную искать статус УПД, актов и счетов.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#request">Получить расчет</a>
+            <a class="button button-ghost" href="../index.html">Все направления</a>
+          </div>
+        </div>
+        <aside class="hero-summary">
+          <strong>Что обычно входит</strong>
+          <ul>
+            <li>подключение ЭДО;</li>
+            <li>обмен с контрагентами;</li>
+            <li>согласование документов;</li>
+            <li>обучение сотрудников;</li>
+            <li>сопровождение после старта.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="section">
+        <div class="direction-layout">
+          <div>
+            <p class="section-kicker">Когда нужно</p>
+            <h2>Если документы уже должны быть электронными, но порядок еще бумажный</h2>
+            <p>ЭДО нужен не только “для галочки”. Он помогает быстрее обмениваться закрывающими документами, видеть статус согласования и не держать работу на личных переписках.</p>
+          </div>
+          <div class="direction-card-list">
+            <article><strong>Контрагенты требуют ЭДО</strong><p>Нужно подключиться и начать обмен без хаоса в первых отправках.</p></article>
+            <article><strong>Документы теряются между почтой и папками</strong><p>Важно понять, где документ находится сейчас и кто должен сделать следующий шаг.</p></article>
+            <article><strong>Нужно обучить сотрудников</strong><p>После настройки команда должна понимать, что открыть, что подписать и где смотреть статус.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="section-heading"><p class="section-kicker">От чего зависит цена</p><h2>Для расчета нужны регион, объем обмена и состав настройки</h2></div>
+        <div class="saby-grid">
+          <article><strong>Регион</strong><span>условия подключения и сопровождения отличаются по городам;</span></article>
+          <article><strong>Контрагенты</strong><span>важно понимать, сколько компаний нужно подключить к обмену;</span></article>
+          <article><strong>Документы</strong><span>УПД, акты, счета, договоры и согласование требуют разной настройки;</span></article>
+          <article><strong>Обучение</strong><span>команде нужно показать, как работать после запуска.</span></article>
+        </div>
+      </section>
+
+      <section id="request" class="request section">
+        <div class="request-copy"><p class="section-kicker">Заявка на расчет</p><h2>Опишите, какой электронный обмен нужно запустить</h2><p>Можно написать: город, сколько сотрудников, какие документы и сколько контрагентов нужно подключить.</p></div>
+        <form class="request-form" id="requestForm">
+          <label>Имя<input type="text" name="name" placeholder="Как к вам обращаться" required /></label>
+          <label>Телефон или email<input type="text" name="contact" placeholder="Куда ответить" required /></label>
+          <label>Задача<textarea name="task" placeholder="Например: нужен ЭДО для УПД и актов, 15 сотрудников, Москва" required></textarea></label>
+          <button class="button button-primary" type="submit">Отправить заявку</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+    <footer><strong>Элдокс</strong><span>Saby ЭДО и электронные документы</span></footer>
+    <script src="../../script.js"></script>
+  </body>
+</html>

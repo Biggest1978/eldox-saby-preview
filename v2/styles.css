@@ -77,6 +77,62 @@ a {
   font-size: 14px;
 }
 
+.nav-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-group > a {
+  font-weight: 800;
+}
+
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  width: min(720px, calc(100vw - 40px));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.nav-group:hover .nav-menu,
+.nav-group:focus-within .nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.nav-menu a {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.nav-menu a:hover {
+  background: var(--paper);
+}
+
+.nav-menu span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
 .topbar-cta {
   padding: 10px 16px;
   border: 1px solid var(--line);
@@ -574,6 +630,49 @@ p {
 
 .solution-primary p {
   color: var(--muted);
+}
+
+.catalog-hero-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.catalog-hero-list li {
+  padding: 14px 16px;
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  background: rgba(56, 107, 255, 0.08);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.direction-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.direction-card-list {
+  display: grid;
+  gap: 14px;
+}
+
+.direction-card-list article {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(14, 27, 56, 0.06);
+}
+
+.direction-card-list strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
 }
 
 .calculator {
@@ -1165,6 +1264,7 @@ footer span {
   .page-hero,
   .split,
   .section-heading.split,
+  .direction-layout,
   .insight,
   .proof-layout,
   .calc-shell,

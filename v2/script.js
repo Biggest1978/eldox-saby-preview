@@ -11,9 +11,9 @@ const formStatus = document.querySelector("#formStatus");
 const articleLists = document.querySelectorAll("[data-articles-list]");
 const articleFilterButtons = document.querySelectorAll("[data-article-filter]");
 const articleFilterStatus = document.querySelector("[data-article-filter-status]");
+
 let loadedArticles = [];
 let activeArticleFilter = "all";
-
 let activeTab = document.querySelector("[data-calc-tab].is-active")?.dataset.calcTab || "saby";
 
 const calculator = {
@@ -37,7 +37,7 @@ const calculator = {
       ["landing", "Лендинг под заявку", 1],
       ["service", "Сайт услуг", 1.35],
       ["seo", "SEO-структура и база знаний", 1.65],
-      ["integrated", "Сайт с формами и интеграциями", 1.9],
+      ["integrated", "Сайт с формами и передачей заявок", 1.9],
     ],
   },
   crm: {
@@ -47,8 +47,8 @@ const calculator = {
     options: [
       ["basic", "Одна воронка продаж", 1],
       ["multi", "Несколько направлений и статусов", 1.35],
-      ["analytics", "Отчеты и контроль руководителя", 1.55],
-      ["sources", "CRM + источники заявок", 1.75],
+      ["analytics", "Отчеты для руководителя", 1.55],
+      ["sources", "CRM и источники заявок", 1.75],
     ],
   },
   bot: {
@@ -58,13 +58,13 @@ const calculator = {
     options: [
       ["lead", "Сбор первичных заявок", 1],
       ["notify", "Уведомления и напоминания", 1.2],
-      ["quiz", "Опрос и квалификация клиента", 1.45],
-      ["integration", "Бот с интеграцией в CRM", 1.8],
+      ["quiz", "Опрос и первичный отбор клиента", 1.45],
+      ["integration", "Бот с передачей данных в CRM", 1.8],
     ],
   },
   complex: {
     label: "комплексного запуска",
-    scaleLabel: "участников процесса",
+    scaleLabel: "участников",
     base: 98000,
     options: [
       ["saby-site", "Saby + сайт", 1],
@@ -90,12 +90,14 @@ function renderScenarioOptions() {
   if (!scenario || !scale) return;
   const current = calculator[activeTab];
   scenario.innerHTML = "";
+
   current.options.forEach(([value, label]) => {
     const option = document.createElement("option");
     option.value = value;
     option.textContent = label;
     scenario.appendChild(option);
   });
+
   const isPagesOrScenarios = activeTab === "site" || activeTab === "bot";
   scale.min = isPagesOrScenarios ? 1 : 3;
   scale.max = isPagesOrScenarios ? 18 : 80;
@@ -105,16 +107,17 @@ function renderScenarioOptions() {
 
 function updateCalculator() {
   if (!scenario || !region || !scale || !support || !scaleOut || !price || !priceNote) return;
+
   const current = calculator[activeTab];
   const option = current.options.find(([value]) => value === scenario.value) || current.options[0];
   const scaleValue = Number(scale.value);
   const supportCost = support.checked ? Math.max(12000, current.base * 0.22) : 0;
   const growth = 1 + Math.max(0, scaleValue - Number(scale.min)) * (activeTab === "site" || activeTab === "bot" ? 0.065 : 0.018);
-  const total = (current.base * option[2] * regionFactors[region.value] * growth) + supportCost;
+  const total = current.base * option[2] * regionFactors[region.value] * growth + supportCost;
 
   scaleOut.value = `${scaleValue} ${current.scaleLabel}`;
   price.textContent = formatRub(total);
-  priceNote.textContent = `Ориентир для ${current.label}: ${option[1].toLowerCase()}, масштаб ${scaleValue}. Точная смета зависит от деталей процесса, интеграций, контента, обучения и сопровождения.`;
+  priceNote.textContent = `Ориентир для ${current.label}: ${option[1].toLowerCase()}, масштаб ${scaleValue}. Точную смету уточним по региону, составу работ, пользователям, обучению и сопровождению.`;
 }
 
 if (tabs.length) {
@@ -139,7 +142,7 @@ if (requestForm) {
   requestForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (formStatus) {
-      formStatus.textContent = "Спасибо. Заявка пока зафиксирована в демо-режиме: следующий шаг — подключить webhook, CRM или Telegram-уведомление.";
+      formStatus.textContent = "Спасибо. Мы получили заявку. Следующий шаг — уточнить задачу и подготовить понятный ориентир по стоимости и запуску.";
     }
     requestForm.reset();
     renderScenarioOptions();
@@ -172,9 +175,10 @@ function updateArticleFilterStatus(count, filter) {
     articleFilterStatus.textContent = `Показаны все материалы: ${count}`;
     return;
   }
+
   articleFilterStatus.textContent = count
     ? `Рубрика: ${filter}. Материалов: ${count}`
-    : `В рубрике "${filter}" пока нет публикаций. Она заложена под следующий выпуск контент-завода.`;
+    : `В рубрике «${filter}» пока нет публикаций. Добавим материал в одном из следующих выпусков.`;
 }
 
 function renderArticleList(articles = loadedArticles) {
@@ -187,10 +191,12 @@ function renderArticleList(articles = loadedArticles) {
     const limit = Number(list.dataset.limit || filtered.length);
     list.innerHTML = "";
     filtered.slice(0, limit).forEach((article) => list.appendChild(createArticleCard(article)));
+
     if (!filtered.length) {
-      list.innerHTML = '<p class="article-empty">В этой рубрике пока нет материалов. Первый выпуск можно добавить через контентный контур.</p>';
+      list.innerHTML = '<p class="article-empty">В этой рубрике пока нет материалов. Скоро добавим первый выпуск.</p>';
     }
   });
+
   updateArticleFilterStatus(filtered.length, activeArticleFilter);
 }
 

@@ -221,6 +221,38 @@ function articleCards(root = ".", linked = false) {
   }).join("");
 }
 
+function homeArticleShelf(root = ".") {
+  const [mainTag, mainTitle, mainText, mainImg, mainSlug] = articles[0];
+  const supporting = articles.slice(1, 4);
+
+  return `<div class="editorial-shelf">
+    <a class="editorial-main" href="${root}/knowledge/${mainSlug}/index.html">
+      <div class="editorial-art editorial-art-saby" aria-hidden="true">
+        <span>Регион</span>
+        <span>Лицензия</span>
+        <span>Запуск</span>
+      </div>
+      <div class="editorial-copy">
+        <span>${mainTag}</span>
+        <h3>${mainTitle}</h3>
+        <p>${mainText}</p>
+        <small>Открыть разбор →</small>
+      </div>
+    </a>
+    <div class="editorial-side">
+      ${supporting.map(([tag, title, text, img, slug], index) => `<a class="editorial-mini" href="${root}/knowledge/${slug}/index.html">
+        <div class="mini-mark mini-mark-${index + 1}" aria-hidden="true"></div>
+        <div>
+          <span>${tag}</span>
+          <h3>${title}</h3>
+          <p>${text}</p>
+          <small>Подробнее →</small>
+        </div>
+      </a>`).join("")}
+    </div>
+  </div>`;
+}
+
 function requestSection(root = ".") {
   return `<section class="section section-dark" id="request">
     <div class="request">
@@ -324,16 +356,15 @@ function renderHome() {
       </div>
       <p>Этот блок не про “новости ради новостей”. Здесь будут короткие материалы для руководителя, бухгалтера или ответственного сотрудника: что изменилось, где может быть риск и с какого шага начать.</p>
     </div>
-    <div class="article-showcase">
+    <div class="article-showcase editorial-block">
       <div class="article-showcase-lead">
         <p class="section-kicker">Зачем читать</p>
-        <h3>Чтобы прийти к заявке уже с понятной задачей</h3>
-        <p>Если вы узнаете свою ситуацию в разборе, проще выбрать направление Saby или понять, что рядом нужен сайт, CRM или бот.</p>
-        ${button("./knowledge/index.html", "Перейти в базу знаний", true)}
+        <h3>Чтобы не покупать сервис вслепую</h3>
+        <p>Перед заявкой полезно понять, что именно болит: документы, отчетность, сайт, заявки или учет клиентов. В разборах показываем простые признаки и объясняем, с чего лучше начать.</p>
+        ${button("./knowledge/index.html", "Смотреть все разборы", true)}
       </div>
-      <div class="article-grid compact">${articleCards(".")}</div>
+      ${homeArticleShelf(".")}
     </div>
-    <div class="section-actions">${button("./knowledge/index.html", "Все публикации", true)}</div>
   </section>
 
   <section class="section section-soft">

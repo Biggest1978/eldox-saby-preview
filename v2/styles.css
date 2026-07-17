@@ -2069,7 +2069,7 @@ footer span {
 }
 
 .product-card small,
-.diagnostic-card small {
+.diagnostic-row small {
   color: var(--blue);
   font-size: 12px;
   font-weight: 900;
@@ -2077,61 +2077,219 @@ footer span {
   text-transform: uppercase;
 }
 
-.diagnostic-grid {
+.diagnostic-board {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(340px, 0.95fr) minmax(0, 1.05fr);
+  gap: 28px;
+  align-items: stretch;
 }
 
-.diagnostic-card {
+.diagnostic-board-visual {
+  position: relative;
   display: grid;
-  align-content: start;
-  min-height: 360px;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
+  align-content: space-between;
+  min-height: 440px;
+  padding: 30px;
+  overflow: hidden;
+  border-radius: 24px;
   background:
-    linear-gradient(180deg, #ffffff, #f7faff);
+    linear-gradient(90deg, rgba(78, 223, 242, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(78, 223, 242, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 78% 20%, rgba(78, 223, 242, 0.2), transparent 30%),
+    linear-gradient(135deg, #0b1327, #132642 58%, #0b1327);
+  background-size: 44px 44px, 44px 44px, auto, auto;
+  color: var(--white);
+  box-shadow: 0 18px 48px rgba(12, 23, 45, 0.07);
+}
+
+.diagnostic-board-visual::before {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+.diagnostic-map {
+  position: relative;
+  min-height: 300px;
+}
+
+.map-card {
+  position: absolute;
+  z-index: 2;
+  min-width: 122px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 900;
+  backdrop-filter: blur(10px);
+}
+
+.map-card-main {
+  left: 50%;
+  top: 50%;
+  min-width: 168px;
+  color: #061126;
+  background: var(--yellow);
+  border-color: rgba(255, 214, 48, 0.9);
+  transform: translate(-50%, -50%);
+}
+
+.map-card-edo {
+  left: 0;
+  top: 20px;
+}
+
+.map-card-reporting {
+  right: 0;
+  top: 48px;
+}
+
+.map-card-hr {
+  left: 26px;
+  bottom: 20px;
+}
+
+.map-card-trade {
+  right: 18px;
+  bottom: 10px;
+}
+
+.map-line {
+  position: absolute;
+  z-index: 1;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(78, 223, 242, 0.1), rgba(78, 223, 242, 0.74), rgba(255, 214, 48, 0.72));
+  transform-origin: left center;
+}
+
+.map-line-a {
+  left: 96px;
+  top: 86px;
+  width: 190px;
+  transform: rotate(22deg);
+}
+
+.map-line-b {
+  right: 104px;
+  top: 104px;
+  width: 150px;
+  transform: rotate(142deg);
+}
+
+.map-line-c {
+  left: 134px;
+  bottom: 90px;
+  width: 164px;
+  transform: rotate(-24deg);
+}
+
+.map-line-d {
+  right: 114px;
+  bottom: 74px;
+  width: 166px;
+  transform: rotate(205deg);
+}
+
+.diagnostic-board-visual p {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 17px;
+}
+
+.diagnostic-status {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(3, 10, 24, 0.34);
+}
+
+.diagnostic-status span {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 9px 0;
+  color: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.diagnostic-status span:last-child {
+  border-bottom: 0;
+}
+
+.diagnostic-status b {
+  color: var(--yellow);
+}
+
+.diagnostic-list {
+  display: grid;
+  gap: 14px;
+}
+
+.diagnostic-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  min-height: 96px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
   color: var(--ink);
   text-decoration: none;
-  box-shadow: 0 18px 48px rgba(12, 23, 45, 0.07);
+  box-shadow: 0 16px 40px rgba(12, 23, 45, 0.06);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.diagnostic-card:nth-child(1) {
-  background:
-    radial-gradient(circle at 100% 0, rgba(78, 223, 242, 0.24), transparent 34%),
-    linear-gradient(135deg, #0d1830, #142746);
-  color: var(--white);
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-.diagnostic-card:nth-child(1) p,
-.diagnostic-card:nth-child(1) small {
-  color: rgba(255, 255, 255, 0.76);
-}
-
-.diagnostic-card h3 {
-  margin: 12px 0;
-}
-
-.diagnostic-card p {
-  margin: 0;
-}
-
-.diagnostic-card em {
-  width: fit-content;
-  margin-top: 20px;
-  padding-bottom: 4px;
-  border-bottom: 2px solid var(--yellow);
-  font-style: normal;
+.diagnostic-row-number {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 50%;
+  background: #eef4ff;
+  color: var(--blue);
   font-weight: 900;
 }
 
-.diagnostic-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(56, 107, 255, 0.26);
-  box-shadow: 0 24px 62px rgba(12, 23, 45, 0.13);
+.diagnostic-row-body {
+  display: grid;
+  gap: 6px;
+}
+
+.diagnostic-row strong {
+  font-size: 20px;
+  line-height: 1.16;
+}
+
+.diagnostic-row em {
+  color: var(--muted);
+  font-style: normal;
+}
+
+.diagnostic-row b {
+  white-space: nowrap;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--yellow);
+}
+
+.diagnostic-row:hover {
+  transform: translateX(4px);
+  border-color: rgba(56, 107, 255, 0.24);
+  box-shadow: 0 22px 54px rgba(12, 23, 45, 0.11);
 }
 
 .calc-estimator {
@@ -2433,11 +2591,18 @@ footer span {
     .article-grid,
     .compare-grid,
     .proof-card,
-    .diagnostic-grid,
     .scenario-flow,
     .launch-timeline,
     .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .diagnostic-board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .diagnostic-board-visual {
+    min-height: 360px;
   }
 
   .proof-panel {
@@ -2557,7 +2722,7 @@ footer span {
   .route-cta,
   .catalog-hero-list,
   .saby-grid,
-  .diagnostic-grid,
+  .diagnostic-board,
   .scenario-flow,
   .launch-timeline,
   .price-formula,
@@ -2582,6 +2747,35 @@ footer span {
   .article-grid.compact,
   .process-visual {
     grid-template-columns: 1fr;
+  }
+
+  .diagnostic-board-visual {
+    min-height: 340px;
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .diagnostic-map {
+    min-height: 240px;
+  }
+
+  .map-card {
+    min-width: auto;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .map-card-main {
+    min-width: 138px;
+  }
+
+  .diagnostic-row {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .diagnostic-row b {
+    grid-column: 2;
+    width: fit-content;
   }
 
   .article-showcase-lead {

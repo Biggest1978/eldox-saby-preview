@@ -238,14 +238,37 @@ function homeDiagnosticCards() {
     ["trade", "Торговля", "Склад, касса и документы не сходятся", "Продажи, остатки, УПД и маркировка требуют единого порядка, чтобы ошибки не всплывали слишком поздно.", "./saby-directions/trade/index.html"]
   ];
 
-  return `<div class="diagnostic-grid">
-    ${cards.map(([slug, tag, title, text, href]) => `<a class="diagnostic-card diagnostic-card-${slug}" href="${href}">
-      <span class="direction-mark direction-mark-${slug}" aria-hidden="true"></span>
-      <small>${tag}</small>
-      <h3>${title}</h3>
-      <p>${text}</p>
-      <em>Подробнее →</em>
-    </a>`).join("")}
+  return `<div class="diagnostic-board">
+    <div class="diagnostic-board-visual" aria-hidden="true">
+      <div class="diagnostic-map">
+        <span class="map-card map-card-main">Задача бизнеса</span>
+        <span class="map-card map-card-edo">Документы</span>
+        <span class="map-card map-card-reporting">Отчетность</span>
+        <span class="map-card map-card-hr">Кадры</span>
+        <span class="map-card map-card-trade">Торговля</span>
+        <i class="map-line map-line-a"></i>
+        <i class="map-line map-line-b"></i>
+        <i class="map-line map-line-c"></i>
+        <i class="map-line map-line-d"></i>
+      </div>
+      <div class="diagnostic-status">
+        <span><b>01</b> Находим задачу</span>
+        <span><b>02</b> Подбираем продукт</span>
+        <span><b>03</b> Считаем запуск</span>
+      </div>
+      <p>Сначала определяем, где в работе теряется время или контроль. Потом выбираем нужный продукт Saby и состав запуска.</p>
+    </div>
+    <div class="diagnostic-list">
+      ${cards.map(([slug, tag, title, text, href], index) => `<a class="diagnostic-row diagnostic-row-${slug}" href="${href}">
+        <span class="diagnostic-row-number">0${index + 1}</span>
+        <span class="diagnostic-row-body">
+          <small>${tag}</small>
+          <strong>${title}</strong>
+          <em>${text}</em>
+        </span>
+        <b>Смотреть решение →</b>
+      </a>`).join("")}
+    </div>
   </div>`;
 }
 

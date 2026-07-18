@@ -5,7 +5,7 @@
     "category": "Saby",
     "date": "2026-07-15",
     "excerpt": "Как считать не абстрактную “цену Saby”, а бюджет под конкретный регион, команду, настройку, обучение и сопровождение.",
-    "image": "../assets/article-saby.svg",
+    "image": "../assets/visual-pack-2026-07-18-articles/article-cover-saby-price-region.png",
     "url": "../knowledge/saby-region-price/index.html"
   },
   {
@@ -14,7 +14,7 @@
     "category": "Сайты",
     "date": "2026-07-15",
     "excerpt": "Семь мест, где ломается путь от интереса до заявки: оффер, кнопка, форма, уведомления, CRM, аналитика и следующий шаг менеджера.",
-    "image": "../assets/article-site.svg",
+    "image": "../assets/visual-pack-2026-07-18-articles/article-cover-site-lost-leads.png",
     "url": "../knowledge/site-loses-leads/index.html"
   },
   {
@@ -23,7 +23,7 @@
     "category": "CRM",
     "date": "2026-07-15",
     "excerpt": "Почему команда возвращается в чаты и таблицы: лишние поля, неясные статусы, ответственные, уведомления, отчеты и простая логика воронки.",
-    "image": "../assets/article-crm.svg",
+    "image": "../assets/visual-pack-2026-07-18-articles/article-cover-crm-bypass.png",
     "url": "../knowledge/crm-not-working/index.html"
   }
 ]
